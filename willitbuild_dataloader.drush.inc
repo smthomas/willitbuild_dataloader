@@ -145,7 +145,7 @@ function willitbuild_dataloader_create_article($article_number, $title, $body, $
 
   $path_alias = PathAlias::create([
     'path' => '/node/' . $node->id(),
-    'alias' => str_replace(' ', '-', strtolower($title)),
+    'alias' => '/' . str_replace(' ', '-', strtolower($title)),
   ]);
   $path_alias->save();
 
