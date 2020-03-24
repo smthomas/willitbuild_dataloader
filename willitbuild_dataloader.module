@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains willitbuild_dataloader.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function willitbuild_dataloader_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the willitbuild_dataloader module.
+    case 'help.page.willitbuild_dataloader':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Loads Will It Build data') . '</p>';
+      return $output;
+
+    default:
+  }
+}
