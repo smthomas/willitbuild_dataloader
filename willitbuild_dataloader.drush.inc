@@ -111,11 +111,12 @@ function willitbuild_dataloader_download_image($image_url, $retry = TRUE) {
   // If it fails, wait a second and try one more time.
   if ($image === FALSE && $retry) {
     sleep(1);
-    willitbuild_dataloader_download_image($image_url, FALSE);
+    return willitbuild_dataloader_download_image($image_url, FALSE);
   }
-
-  $filename = array_pop(explode('/', $image_url));
-  return file_save_data($image, 'public://willitbuild/' . $filename);
+  else {
+    $filename = array_pop(explode('/', $image_url));
+    return file_save_data($image, 'public://willitbuild/' . $filename);
+  }
 }
 
 /**
