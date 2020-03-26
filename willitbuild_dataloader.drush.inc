@@ -73,7 +73,7 @@ function willitbuild_dataloader_load_json(array $json) {
     willitbuild_dataloader_create_article($data['articleNumber'], $data['title'], $data['content'], $file);
 
     $cnt++;
-    if ($cnt % 10 == 0) {
+    if ($cnt % 100 == 0) {
       drush_print('Loaded ' . $cnt . ' articles...');
     }
   }
