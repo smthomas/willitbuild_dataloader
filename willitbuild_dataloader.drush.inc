@@ -105,8 +105,15 @@ function willitbuild_dataloader_validate_data(array $data) {
  * @return object
  *   The created file entity object.
  */
-function willitbuild_dataloader_download_image($image_url) {
+function willitbuild_dataloader_download_image($image_url, $retry = TRUE) {
   $image = file_get_contents($image_url);
+
+  // If it fails, wait a second and try one more time.
+  if ($image === FALSE && $retry) {
+    sleep(1);
+    willitbuild_dataloader_download_image($image_url, FALSE);
+  }
+
   $filename = array_pop(explode('/', $image_url));
   return file_save_data($image, 'public://willitbuild/' . $filename);
 }
